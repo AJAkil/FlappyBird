@@ -1,0 +1,857 @@
+#include"iGraphics.h"
+#include<stdio.h>
+#include<stdlib.h>
+
+int flag=0,count1=0,count2=0,temp=0;
+
+int  x=26,count=0,dummy;
+int j,l;
+
+
+int a[7]= {100,200,300,400,500,600,700};
+
+int z[7]= {800,900,1000,1100,1200,1300,1400};
+
+
+int b=600,c,d,ip,i=2,dx=1,t;
+int height[7]= {423,150,250,367,770,591,950};
+int heightup2[7]={545,345,645,745,845,945,835};
+int back[7];
+
+
+
+int height2[7]= {540,243,687,493,660,999,540};
+int heightup[7]={556,456,654,199.970,523,1071};
+
+int back2[7];
+int u=290;
+double dy=60;
+char s[100];
+int q=240;
+
+
+//main game functio
+
+
+
+
+void iDraw()
+{
+    if(flag==0)
+    {
+        iClear();
+
+        iSetColor(0,0,0);
+
+        iShowBMP(0,0,"angry_birds___poached_eggs_theme_i_background_by_angrybirdsstuff-d6qa909.bmp");
+
+        iText(300,450,"FLAPPY BIRD",GLUT_BITMAP_TIMES_ROMAN_24);
+
+        iRectangle(300,300,100,50);
+        iText(320,320,"PLAY",GLUT_BITMAP_TIMES_ROMAN_24);
+
+        iRectangle(300,230,200,50);
+        iText(320,250,"HOW TO PLAY",GLUT_BITMAP_TIMES_ROMAN_24);
+
+        iRectangle(300,160,180,50);
+        iText(320,180,"HIGHSCORES",GLUT_BITMAP_TIMES_ROMAN_24);
+
+        iRectangle(300,90,200,50);
+        iText(320,110,"QUIT GAME :(",GLUT_BITMAP_TIMES_ROMAN_24);
+
+    }
+    if(flag==1)
+    {
+
+        iClear();
+        iSetColor(255,255,255);
+        iFilledRectangle(30,30,740,540);
+
+        iSetColor(0,0,0);
+        iFilledCircle(50,550,10);
+        iText(60,545,"GO BACK",GLUT_BITMAP_HELVETICA_18);
+
+
+        iSetColor(0,0,0);
+        iText(300,530,"HOW TO PLAY??",GLUT_BITMAP_TIMES_ROMAN_24);
+
+        iText(60,500,"It's pretty simple.All you gotto do is lift the bird pressing spacebar",GLUT_BITMAP_HELVETICA_18);
+        iText(60,470,"Make sure you keep on pressing,else your bird is gonna fall.",GLUT_BITMAP_HELVETICA_18);
+        iText(60,440,"The game is over if any obstacle is hit or if the bird falls down",GLUT_BITMAP_HELVETICA_18);
+
+    }
+
+    if(flag==2)
+    {
+
+
+        iClear();
+
+        iSetColor(102,51,153);
+        //iFilledRectangle(20,584,20,10);
+        iSetColor(255,255,255);
+        iText(45,582,"PRESS x TO EXIT",GLUT_BITMAP_HELVETICA_18);
+
+        iSetColor(255,255,255);
+
+        iLine(1,570,800,570);
+        iLine(1,30,800,30);
+
+
+        iShowBMP(1,30,"927b2caca31fda5069f3116d424881c7.bmp");
+
+
+        iSetColor(0,0,0);
+
+
+        iFilledCircle(x,u,10);
+
+        for(i=0; i<7; i++)
+        {
+			if(count<=7)
+            {iSetColor(back[i],back[i]*i,back[i+1]*i*i);
+            iFilledRectangle(a[i],30,30,height[i]%200);   //MANUAL SET OF HEIGHTS
+			
+			
+			}
+
+			else if(count>7 && count<=21)
+			
+			{
+			iSetColor(back[i],back[i]*i,back[i+1]*i*i);
+            iFilledRectangle(a[i],30,30,height[i]%250);
+
+			
+			}
+
+			else if(count>21 && count<=35)
+			
+			{
+				iSetColor(back[i],back[i]*i,back[i+1]*i*i);
+            iFilledRectangle(a[i],30,30,height[i]%278);
+			}
+
+			else if(count>35 && count<=49 )
+			
+			{
+				iSetColor(back[i],back[i]*i,back[i+1]*i*i);
+				iFilledRectangle(a[i],30,30,height[i]%280);
+			}
+			else if(count>49 && count<=63)
+			
+			{
+				iSetColor(back[i],back[i]*i,back[i+1]*i*i);
+            iFilledRectangle(a[i],30,30,height[i]%283);
+			}
+			else if(count>63 && count<=77)
+			
+			{
+			iSetColor(back[i],back[i]*i,back[i+1]*i);
+            iFilledRectangle(a[i],30,30,height[i]%285);
+			}
+			else if(count>77 && count<=91)
+			
+			{
+			  iSetColor(back[i],back[i]*i,back[i+1]*i*i);
+              iFilledRectangle(a[i],30,30,height[i]%295);
+			}
+			 else if(count>91 && count<=105)
+			
+			{
+			 iSetColor(back[i],back[i]*i,back[i+1]*i*i);
+             iFilledRectangle(a[i],30,30,height[i]%255);
+			}
+			
+			else if(count>105 && count <=119)
+			{
+				iSetColor(back[i],back[i]*i,back[i+1]*i*i*i);
+                iFilledRectangle(a[i],30,30,height[i]%266);
+			}
+			else if(count>119 && count<=133)
+			{	
+				iSetColor(back[i],back[i]*i,back[i+1]*i*i*i);
+                iFilledRectangle(a[i],30,30,height[i]%266);
+
+			}
+			else if(count>133 && count<=147)
+			{
+			iSetColor(back[i],back[i]*i,back[i+1]*i*i);
+            iFilledRectangle(a[i],30,30,height[i]%250);
+			}
+
+			else if(count>147 && count<=161)
+			{
+			iSetColor(back[i],back[i]*i,back[i+1]*i*i);
+            iFilledRectangle(a[i],30,30,height[i]%250);
+			}
+			else if(count>161 && count<=175)
+			{
+				iSetColor(back[i],back[i]*i,back[i+1]*i);
+            iFilledRectangle(a[i],30,30,height[i]%223);
+			}
+
+			else
+			{
+					
+			iSetColor(back[i],back[i]*i,back[i+1]);
+            iFilledRectangle(a[i],30,30,height[i]%231);
+			}
+
+        }
+
+
+        for(i=0; i<7; i++)
+        {
+            iSetColor(back[i],back[i]*i*i/2,back[i+1]*i*i*i);
+            iFilledRectangle(a[i],570,30,-heightup[i]%200);
+		
+        }
+
+
+        //for second array set of heights
+
+
+        for(i=0; i<7; i++)
+        {
+			
+            if(count<=14)
+            {iSetColor(back[i],back[i]*i,back[i+1]*i*i);
+            iFilledRectangle(z[i],30,30,height2[i]%200);
+			}
+
+			else if(count>14 && count<=28)						//MANUAL SET OF HEIGHTS
+			
+			{
+			iSetColor(back[i],back[i]*i,back[i+1]*i*i);
+            iFilledRectangle(z[i],30,30,height2[i]%214);
+			}
+
+			else if(count>28 && count<=42)
+			
+			{
+				iSetColor(back[i],back[i]*i,back[i+1]*i*i);
+            iFilledRectangle(z[i],30,30,height2[i]%255);
+			}
+
+			else if(count>42 && count<=56)
+			
+			{
+				iSetColor(back[i],back[i]*i,back[i+1]*i*i);
+			 iFilledRectangle(z[i],30,30,height2[i]%273);
+			}
+			else if(count>56 && count<=70)
+			
+			{
+				iSetColor(back[i],back[i]*i,back[i+1]*i*i);
+            iFilledRectangle(z[i],30,30,height2[i]%279);
+			}
+			else if(count>70 && count<=84)
+			
+			{
+			iSetColor(back[i],back[i]*i,back[i+1]*i*i);
+            iFilledRectangle(z[i],30,30,height2[i]%237);
+			}
+			else if(count>84 && count<=98)
+			
+			{
+				iSetColor(back[i],back[i]*i,back[i+1]*i*i);
+            iFilledRectangle(z[i],30,30,height2[i]%280);
+			}
+			else if(count>98 && count<=112)
+			
+			{
+			 iSetColor(back[i],back[i]*i,back[i+1]*i*i);
+             iFilledRectangle(z[i],30,30,height2[i]%285);
+			}
+			else if(count>112 && count<=126)
+			
+			{
+				iSetColor(back[i],back[i]*i,back[i+1]*i*i);
+                iFilledRectangle(z[i],30,30,height2[i]%266);
+			}
+
+			else if(count>126 && count<=140)
+			
+			{
+				iSetColor(back[i],back[i]*i,back[i+1]*i*i);
+                iFilledRectangle(z[i],30,30,height2[i]%261);
+			}
+
+			else if(count>140 && count<=154)
+				
+				{
+				iSetColor(back[i],back[i]*i,back[i+1]*i*i*i*6);
+                iFilledRectangle(z[i],30,30,height2[i]%226);
+			}
+			else if(count>154 && count<=168)
+
+				{
+				iSetColor(back[i],back[i]*i,back[i+1]*i*i);
+                iFilledRectangle(z[i],30,30,height2[i]%264);
+			}
+			else 
+			{
+				iSetColor(back[i],back[i]*i,back[i+1]*i*i);
+            iFilledRectangle(z[i],30,30,height2[i]%250);
+			}
+
+
+
+        }
+
+
+        for(i=0; i<7; i++)
+        {
+            iSetColor(back[i],back[i]*i*i/2,back[i+1]*i*i*i);
+            iFilledRectangle(z[i],570,30,-heightup2[i]%245 );
+			
+        }
+    }
+
+    if(flag==3)
+    {
+        iClear();
+
+
+
+        iShowBMP(0,0,"1511.bmp");
+
+        iSetColor(255,255,255);
+        iRectangle(270,310,270,50);
+
+        itoa(count,s,10);
+
+        iSetColor(0,0,0);
+
+        iText(450,270,s,GLUT_BITMAP_HELVETICA_18);
+
+        u=290;
+
+	
+    }
+
+
+}
+
+
+
+void iMouseMove(int mx, int my)
+{
+    //place your codes here
+
+}
+
+/*
+	function iMouse() is called when the user presses/releases the mouse.
+	(mx, my) is the position where the mouse pointer is.
+*/
+void iMouse(int button, int state, int mx, int my)
+{
+    if(button==GLUT_LEFT_BUTTON &&  state==GLUT_DOWN)
+    {
+        if((mx>=300 && mx<=500) && (my>=230 && my<=280) && flag==0)
+        {
+            flag=1;
+
+        }
+        if((mx>=300 && mx<=400) && (my>=300 && my<=350) && flag==0)
+        {
+            flag=2;
+        }
+        if( mx>=50 && mx<=100 && my>=550 && my<=600 && flag==1)
+        {
+            flag=0;
+        }
+        if((mx>=300 && mx<=500) && (my>=90 && my<=140))
+        {
+            exit(0);
+        }
+
+        if((mx>=270 && mx<=540) && (my>=310 && my<=360) && flag==3)
+        {
+            flag=1;
+            count=0;
+            dummy=0;
+			printf("%d",count);
+        }
+    }
+    if(button == GLUT_RIGHT_BUTTON && state == GLUT_DOWN)
+    {
+        //place your codes here
+    }
+}
+
+
+void iKeyboard(unsigned char key)
+{
+
+    if(key=='p')
+    {
+        dummy=1;
+    }
+    if(flag==2 && key=='x')
+    {
+        exit(0);
+    }
+    if(flag==2 && key==' ')
+    {
+
+        //printf("%lf\n",dy);
+        u=u+dy;
+
+		PlaySound("Everything\\sfx_wing",NULL,SND_ASYNC);
+        //	printf("%lf",u);
+
+    }
+
+
+
+}
+//place your codes for other keys here
+
+
+
+//place your codes for other keys here
+
+void iSpecialKeyboard(unsigned char key)
+{
+    if(key==GLUT_KEY_UP)
+    {
+    }
+    //place your codes for other keys here
+}
+
+void animate()
+{
+    if(flag==2 && dummy==1)
+    {
+		if(count>105 && count<=140)
+		{
+			u-=15;
+		}
+		else if(count>70 && count<=105)
+		{
+			u-=12;
+		}
+		else if(count>35 && count<=70)
+		{
+			u-=10;
+		}
+		else
+		{
+        u-=8;
+		}
+        if(u==50)
+        {
+            flag=3;
+        }
+    }
+}
+
+void animateblock()
+{
+    if(flag==2 && dummy==1)
+    {
+        for(i=0; i<7; i++)
+        {
+		{
+			a[i]-=1;
+		}
+
+            if(a[i]==x)
+            {
+                count++;
+				PlaySound("Everything\\sfx_point",NULL,SND_ASYNC);
+				//printf("%d\n",a[i]);
+            }
+
+            printf("%d\n",count);
+
+			//GAMEOVERPART//
+
+            //if( a[i]-x==10 && (u>= && u<=570))
+            {
+                //flag=3;
+				//printf("current height: %d\n",u);
+				//printf(" Pillars height: %d\n",height2[i]%233);
+				//printf("gap : %d\n",a[i]-x);
+				
+            }
+			 
+			//if(a[i]-x==10 && (u>=30 && (u<=height[i]%200 || u<=height[i]%250 || u<=height[i]%255 || u<=height[i]%259 || height[i]%223 || height[i]%237 || height[i]%295|| height[i]%266 || height[i]%231)))
+			
+			{
+
+				//flag=3;
+				//printf("gap : %d\n",a[i]-x);
+				//printf("current height of ball: %d\n",u);
+				//printf("i=%d\n",i);
+				//printf("pillar height of first set:%d\n",height[i]%200);
+
+			}
+
+
+		
+if(count<7)
+{
+    if(a[i]-x==10 ||( a[i]>=16 && a[i]<=36))
+    {
+        temp=(height[i]%200);
+        //printf("%d\n",temp);
+
+        if(u>30 && u<=temp)
+        {
+
+			PlaySound("Everything\\sfx_hit",NULL,SND_ASYNC);
+            flag=3;
+        }
+    }
+}
+
+if(count>7 && count<=21)
+{
+    if(a[i]-x==10  ||( a[i]>=16 && a[i]<=36))
+    {
+        temp=(height[i]%250);
+        //printf("%d\n",temp);
+
+        if(u>30 && u<=temp)
+        {
+            flag=3;
+        }
+    }
+}
+
+if(count>21 && count<=35)
+{
+    if(a[i]-x==10  ||( a[i]>=16 && a[i]<=36))
+    {
+        temp=(height[i]%278);
+        //printf("%d\n",temp);
+
+        if(u>30 && u<=temp)
+        {
+            flag=3;
+        }
+    }
+}
+
+if(count>35 && count<=49)
+{
+    if(a[i]-x==10  ||( a[i]>=16 && a[i]<=36))
+    {
+        temp=(height[i]%281);
+        printf("%d\n",temp);
+
+        if(u>30 && u<=temp)
+        {
+            flag=3;
+        }
+    }
+}
+ 
+            if(a[6]<=-25)
+            {
+                for(j=0; j<7; j++)
+                {
+                   switch(j)
+                    {
+                    case 0:
+                        a[0]=800;
+						break;
+						
+
+                    case 1:
+                        a[1]=900;
+						break;
+
+                    case 2:
+                        a[2]=1000;
+						break;
+
+                    case 3:
+                        a[3]=1100;
+						break;
+
+                    case 4:
+                        a[4]=1200;
+						break;
+
+                    case 5:
+                        a[5]=1300;
+						break;
+					case 6:
+						a[6]=1400;
+						break;
+
+                    }
+                }
+
+            }
+        }
+
+    }
+
+}
+
+
+void animateblock2()
+{
+    if(flag==2 && dummy==1)
+    {
+        for(l=0; l<7; l++)
+
+        {
+			{
+				z[l]-=1;
+			}
+
+            if(z[l]==x)
+            {
+                count++;
+				
+				PlaySound("Everything\\sfx_point",NULL,SND_ASYNC);
+				//for counting the scores
+				//printf("%d",count);
+				//printf("%d\n",a[i]);
+
+            }
+
+			
+			//GAMEOVERPART//
+
+
+            //if( z[l]-x==10 && u>= && u<=570 )
+            {
+                //flag=3;
+				//printf("current height: %d\n",u);
+				//printf(" Pillars height: %d\n",height[i]%245);
+				//printf("gap : %d\n",z[l]-x);
+            }
+
+			//if(z[l]-x==10 && (u>=30 && (u<=height2[l]%200 || height2[l]%250 || height2[l]%253 || height2[l]%254|| height2[l]%223 || height2[l]%237 || height2[l]%295 || height2[l]%255 || height2[l]%266 || height2[l]%261 || height2[l]%226 || height2[l]%264)))
+			{
+				//flag=3;
+
+				//printf("gap : %d\n",z[l]-x);
+				//printf("current height of ball: %d\n",u);
+				//printf("l=%d\n",l);
+				//printf("pillar height :%d\n",height2[l]%200);
+
+			}
+			
+if(count<=14)
+{
+    if(z[l]-x==10  || ( z[l]>=16 && z[l]<=36))
+    {
+        temp=(height2[l]%200);
+        // printf("%d\n",temp);
+
+        if(u>30 && u<=temp)
+        {
+            flag=3;
+        }
+    }
+}
+
+if(count>14 && count<=28)
+{
+    if(z[l]-x==10  ||( z[l]>=16 && z[l]<=36))
+    {
+        temp=(height2[l]%214);
+        //printf("%d\n",temp);
+
+        if(u>30 && u<=temp)
+        {
+            flag=3;
+        }
+    }
+}
+if(count>28 && count<=42)
+{
+    if(z[l]-x==10  ||( z[l]>=16 && z[l]<=36))
+    {
+        temp=(height2[l]%255);
+        //printf("%d\n",temp);
+
+        if(u>30 && u<=temp)
+        {
+            flag=3;
+        }
+    }
+}
+
+ 		
+            if(z[6]<=-25)
+
+            {
+
+
+                for(l=0; l<7; l++)
+                    //z[l]=100*(l+1);
+                {
+
+                    switch(l)
+                    {
+                    case 0:
+                        z[0]=800;
+
+                    case 1:
+                        z[1]=900;
+
+                    case 2:
+                        z[2]=1000;
+
+                    case 3:
+                        z[3]=1100;
+
+                    case 4:
+                        z[4]=1200;
+
+                    case 5:
+                        z[5]=1300;
+					case 6:
+						z[6]=1400;
+
+                    }
+
+                }
+
+
+            }
+
+
+        }
+
+    }
+
+
+
+}
+
+
+
+
+int main()
+
+
+{
+
+
+   
+        if(count<=10)
+        {
+                for(j=0;j<7;j++)
+                {
+                
+                height[j]=rand();
+                back[j]=rand()%(i*i+250);
+			//printf("%d\n",back[j]);
+				
+	//printf("%d\n",height[j]%245);
+//	printf("\n");
+	//printf("%d\n",height2[j]%233);
+			
+                
+                }
+
+				printf("\n");
+            }
+            
+        else if(count>10 && count<=20)
+        {
+            
+                for(j=0;j<7;j++)
+                {
+                height[j]=rand();
+                back[j]=rand()%(i*i+261);
+                }
+            
+           
+        }
+        else if(count>20 && count<=30)
+        {
+            
+                for(j=0;j<7;j++)
+                {
+                height[j]=rand();
+                back[j]=rand()%(i*i+233);
+                }
+            
+        }
+        else
+        {
+               for(j=0;j<7;j++)
+                {
+                height[j]=rand();
+                back[j]=rand()%(i*i+243);
+                }
+        }
+        
+        
+
+        if(count<=10)
+        {
+           
+                for(j=0;j<7;j++)
+                {
+                height2[j]=rand();
+                back2[j]=rand()%(240+i*i);
+                //printf("%d\n",back2[j]);
+				
+                }
+				printf("\n");
+        }
+        else if(count>10 && count<=20)
+        {
+                for(j=0;j<7;j++)
+                {
+                height2[j]=rand();
+                back2[j]=rand()%(230+i*i);
+                }
+        }
+        else if(count>20 && count<=30)
+        {       
+            for(j=0;j<7;j++)
+            {
+                height2[j]=rand();
+                back2[j]=rand()%(220+i*i);
+            }
+        }
+        else
+        {
+                for(j=0;j<7;j++)
+                {
+                height2[j]=rand();
+                back2[j]=rand()%(225+i*i);
+                }
+        }
+
+        iSetTimer(50,animate);
+
+        iSetTimer(3,animateblock);
+
+        iSetTimer(3,animateblock2);
+		
+		if(flag==2)
+		{
+	PlaySound("Everything\\sfx_wing",NULL,SND_ASYNC);
+	PlaySound("Everything\\sfx_point",NULL,SND_ASYNC);
+	PlaySound("Everything\\sfx_hit",NULL,SND_ASYNC);
+
+		}
+
+    iInitialize(800, 600, "fLAPPYbALL");
+
+    
+
+            
+
+
+    return 0;
+
+}
+
+
+
+
